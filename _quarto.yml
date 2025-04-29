@@ -6,11 +6,11 @@ website:
   navbar:
     left:
       - text: "Home"
-        file: index.qmd
+        file: index.html
       - text: "EXO View"
-        file: exoView.qmd
+        file: exoView.html
       - text: "EXO Plot"
-        file: exoPlot.qmd
+        file: exoPlot.html
     right:
       - icon: github
         href: https://github.com/marine-ecologist/exo

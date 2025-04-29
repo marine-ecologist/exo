@@ -1,0 +1,17 @@
+---
+title: "exoTools"
+format: html
+editor: visual
+---
+
+![](images/clipboard-424459980.png){width="104"}
+
+simple shiny-based tools for visualising and analysing data from EXO Sondes.
+
+-   exoView: timeseries data
+
+    ![](images/exoView_screenshot.png)
+
+-   exoPlot: x\~y regression
+
+    ![](images/exoPlot_screenshot.png)
