@@ -1,9 +1,0 @@
-[
-  {
-    "objectID": "articles/index.html",
-    "href": "articles/index.html",
-    "title": "exoTools",
-    "section": "",
-    "text": "simple shiny-based tools for visualising and analysing data from EXO Sondes.\n\nexoView: timeseries data\n\nexoPlot: x~y regression"
-  }
-]
