@@ -1,0 +1,10 @@
+name: exoViewer
+title:
+username: o7s3wi-george-roff
+account: o7s3wi-george-roff
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11541904
+bundleId: 8395403
+url: https://marine-ecologist.shinyapps.io/exoViewer/
+version: 1
