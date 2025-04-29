@@ -21,6 +21,6 @@ editor: source
 </style>
 ```
 
-<iframe src="https://marine-ecologist-exoplot.share.connect.posit.cloud" frameborder="0">
+<iframe src="https://marine-ecologist-exoview.share.connect.posit.cloud/" frameborder="0">
 
 </iframe>
