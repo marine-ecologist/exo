@@ -1,8 +1,12 @@
+
+
+
+### exoPlot
+
 library(shiny)
 library(tidyverse)
 library(lubridate)
 library(plotly)
-library(conflicted)
 
 # Parameter labels
 param_labels <- c(
@@ -111,13 +115,13 @@ server <- function(input, output, session) {
     if (input$size_var != "None") vars <- c(vars, input$size_var)
     vars <- intersect(vars, names(load_data()))
     df <- load_data() |> select(any_of(vars)) |> drop_na()
-    df <- df |> filter(
+    df <- df |> dplyr::filter(
       between(datetime, input$date_range[1], input$date_range[2]),
       between(.data[[input$x_var]], input$x_range[1], input$x_range[2]),
       between(.data[[input$y_var]], input$y_range[1], input$y_range[2])
     )
     if (!is.null(input$depth_range) && "depth_m" %in% names(df)) {
-      df <- df |> filter(between(depth_m, input$depth_range[1], input$depth_range[2]))
+      df <- df |> dplyr::filter(between(depth_m, input$depth_range[1], input$depth_range[2]))
     }
     if (nrow(df) < 2) return("Insufficient data for regression")
     fit <- lm(df[[input$y_var]] ~ df[[input$x_var]])
@@ -125,7 +129,7 @@ server <- function(input, output, session) {
     r2 <- summary_fit$r.squared
     pval <- coef(summary_fit)[2, 4]
     ptext <- if (pval < 1e-5) "< 0.00001" else sprintf("%.3g", pval)
-    sprintf("R-squared: %.3f\nP-value: %s\nN: %d", r2, ptext, nrow(df))
+    sprintf("R-squared: %.3f  P-value: %s. Number of datapoints: %d", r2, ptext, nrow(df))
   })
 
   output$regression_plot <- renderPlotly({
@@ -140,13 +144,13 @@ server <- function(input, output, session) {
       return(NULL)
     })
     if (is.null(df)) return(plotly::plotly_empty() |> plotly::layout(title = list(text = "Parameters not found", font = list(size = 22))))
-    df <- df |> filter(
+    df <- df |> dplyr::filter(
       between(datetime, input$date_range[1], input$date_range[2]),
       between(.data[[input$x_var]], input$x_range[1], input$x_range[2]),
       between(.data[[input$y_var]], input$y_range[1], input$y_range[2])
     )
     if (!is.null(input$depth_range) && "depth_m" %in% names(df)) {
-      df <- df |> filter(between(depth_m, input$depth_range[1], input$depth_range[2]))
+      df <- df |> dplyr::filter(between(depth_m, input$depth_range[1], input$depth_range[2]))
     }
     colnames(df)[2:4] <- c("x", "y", "fill")
     if (use_size) colnames(df)[5] <- "size"

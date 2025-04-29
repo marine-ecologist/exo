@@ -2,7 +2,6 @@ library(shiny)
 library(tidyverse)
 library(lubridate)
 library(plotly)
-library(conflicted)
 
 # Label dictionary
 param_labels <- c(
@@ -97,7 +96,7 @@ server <- function(input, output, session) {
     }
 
     plots <- map(input$parameters, function(p) {
-      df_sub <- df |> filter(parameter == p)
+      df_sub <- df |> dplyr::filter(parameter == p)
       plot_ly(
         data = df_sub,
         x = ~datetime,
