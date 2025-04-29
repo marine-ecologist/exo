@@ -1,0 +1,22 @@
+project:
+  type: website
+
+website:
+  title: ""
+  navbar:
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "EXO View"
+        file: exoView.qmd
+      - text: "EXO Plot"
+        file: exoPlot.qmd
+    right:
+      - icon: github
+        href: https://github.com/marine-ecologist/exo
+        aria-label: GitHub
+
+format:
+  html:
+    theme: cosmo
+    toc: true
